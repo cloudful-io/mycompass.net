@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { SubdomainForm } from './subdomain-form';
 import { rootDomain } from '@/lib/utils';
+import { Logo } from '@/components/shared/logo';
 
 export default async function HomePage() {
   return (
@@ -14,6 +15,9 @@ export default async function HomePage() {
         </Link>
       </div>
 
+      <div className="flex justify-center">
+        <Logo size="large" />
+      </div>
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900">
