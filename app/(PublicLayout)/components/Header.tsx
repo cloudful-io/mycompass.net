@@ -21,14 +21,14 @@ export default function HeaderClient() {
   const linkClass = (href: string) =>
     cn(
       'inline-flex items-center h-8 leading-none text-primary hover:text-primary/90 transition-colors',
-      isActive(href) && 'bg-primary/10 dark:bg-primary/20 text-primary font-semibold px-3 rounded-full'
+      isActive(href) && 'bg-primary/10 dark:bg-primary/20 text-primary font-semibold px-3 rounded-md'
     )
 
   return (
     <header className="bg-background border-b sticky top-0 z-50">
       <div className="container mx-auto px-4 flex items-center justify-between py-4">
         <div className="flex items-center">
-          <Logo size="large" link />
+          <Logo size="large" link image />
         </div>
 
         <div className="hidden md:flex items-center gap-6">
@@ -57,7 +57,7 @@ export default function HeaderClient() {
           <div className="absolute inset-0 bg-popover/40" onClick={() => setOpen(false)} />
           <div className="absolute right-0 top-0 h-full w-64 bg-background p-4 shadow-lg">
             <div className="flex items-center justify-between mb-6">
-              <Logo size="medium" />
+              <Logo size="medium" link image />
               <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2">
                 <X className="w-6 h-6" />
               </button>
