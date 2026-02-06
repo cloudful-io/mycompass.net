@@ -1,19 +1,22 @@
 "use client"
 
-import { useTheme } from "next-themes"
 import { Typography } from "./Typography"
 
 interface LogoProps {
-  size?: "small" | "medium" | "large"
+  size?: "small" | "medium" | "large" | "xlarge"
   className?: string
 }
 
 export function Logo({ size = "medium", className = "" }: LogoProps) {
-  const { theme } = useTheme()
+  const rosterSizeClass = size === "large" ? "text-3xl sm:text-4xl" : size === "xlarge" ? "text-4xl sm:text-5xl" : ""
+  const thSizeClass = size === "large" ? "text-2xl sm:text-3xl" : size === "xlarge" ? "text-3xl sm:text-4xl" : ""
 
   return (
-    <Typography size="large" weight="bold" color={theme === "dark" ? "light" : "dark"}>
-      Throster
+    <Typography size={size} weight="bold" className={`inline-flex items-baseline ${className}`}>
+      <span className={`!text-gray-500 dark:!text-gray-300 leading-none ${thSizeClass}`}>TH</span>
+      <span className={`ml-0.5 font-extrabold leading-none bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent drop-shadow-sm ${rosterSizeClass}`}>
+        roster
+      </span>
     </Typography>
   )
 }

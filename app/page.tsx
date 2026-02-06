@@ -15,7 +15,7 @@ export default async function HomePage() {
       </div>
 
       <div className="flex justify-center">
-        <Logo size="large" />
+        <Logo size="large"/>
       </div>
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">

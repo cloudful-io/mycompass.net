@@ -9,6 +9,7 @@ const typography = cva("", {
       small: "text-sm",
       medium: "text-base",
       large: "text-2xl",
+      xlarge: "text-4xl sm:text-5xl",
     },
     weight: {
       normal: "font-normal",
@@ -27,7 +28,7 @@ const typography = cva("", {
 })
 
 interface TypographyProps extends React.HTMLAttributes<HTMLSpanElement> {
-  size?: "small" | "medium" | "large"
+  size?: "small" | "medium" | "large" | "xlarge"
   weight?: "normal" | "bold"
   color?: "light" | "dark"
 }
