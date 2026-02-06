@@ -6,7 +6,7 @@ import { Logo } from '@/components/shared/logo'
 import { ModeToggle } from '@/components/shared/mode-toggle'
 import { Menu, X } from 'lucide-react'
 
-export default function Header() {
+export default function HeaderClient() {
   const [open, setOpen] = useState(false)
 
   return (
