@@ -5,8 +5,15 @@ import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { Logo } from '@/components/shared/logo'
 import { ModeToggle } from '@/components/shared/mode-toggle'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, LogOut } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
 export default function HeaderClient() {
   const [open, setOpen] = useState(false)
@@ -34,11 +41,29 @@ export default function HeaderClient() {
         <div className="hidden md:flex items-center gap-6">
           <nav className="flex gap-6">
             <Link href="/" className={linkClass('/')} aria-current={isActive('/') ? 'page' : undefined}>Home</Link>
-            <Link href="/about" className={linkClass('/about')} aria-current={isActive('/about') ? 'page' : undefined}>About</Link>
-            <Link href="/features" className={linkClass('/features')} aria-current={isActive('/features') ? 'page' : undefined}>Features</Link>
-            <Link href="/pricing" className={linkClass('/pricing')} aria-current={isActive('/pricing') ? 'page' : undefined}>Pricing</Link>
-            <Link href="/admin" className={linkClass('/admin')} aria-current={isActive('/admin') ? 'page' : undefined}>Admin</Link>
           </nav>
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="relative w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-colors flex items-center justify-center cursor-pointer" aria-label="User menu">
+                <span className="text-white font-semibold text-sm">JD</span>
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem asChild>
+                <Link href="/profile" className="cursor-pointer">My Profile</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/settings" className="cursor-pointer">My Settings</Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="cursor-pointer text-red-600 hover:text-red-700 focus:text-red-700">
+                <LogOut className="w-4 h-4 mr-2" />
+                <span>Log Out</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <ModeToggle />
         </div>
 
@@ -66,10 +91,6 @@ export default function HeaderClient() {
 
             <nav className="flex flex-col gap-4">
               <Link href="/" onClick={() => setOpen(false)} className={cn('flex items-center h-10', linkClass('/'))} aria-current={isActive('/') ? 'page' : undefined}>Home</Link>
-              <Link href="/about" onClick={() => setOpen(false)} className={cn('flex items-center h-10', linkClass('/about'))} aria-current={isActive('/about') ? 'page' : undefined}>About</Link>
-              <Link href="/features" onClick={() => setOpen(false)} className={cn('flex items-center h-10', linkClass('/features'))} aria-current={isActive('/features') ? 'page' : undefined}>Features</Link>
-              <Link href="/pricing" onClick={() => setOpen(false)} className={cn('flex items-center h-10', linkClass('/pricing'))} aria-current={isActive('/pricing') ? 'page' : undefined}>Pricing</Link>
-              <Link href="/admin" onClick={() => setOpen(false)} className={cn('flex items-center h-10', linkClass('/admin'))} aria-current={isActive('/admin') ? 'page' : undefined}>Admin</Link>
             </nav>
 
             <div className="mt-6">

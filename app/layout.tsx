@@ -11,8 +11,8 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: 'Throster',
-  description: 'Multi-Tenant Platform for your School Registration Needs',
+  title: 'MyCompass',
+  description: 'Your guide to managing your career.',
 };
 
 export default function RootLayout({
