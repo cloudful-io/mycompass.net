@@ -1,23 +1,66 @@
-import { SubdomainForm } from '../subdomain-form';
-import { rootDomain } from '@/lib/utils';
+import Link from 'next/link'
+import { Calendar, Briefcase, Plane, User } from 'lucide-react'
+import { Card } from '@/components/ui/card'
 
-export default async function HomePage() {
+const menuItems = [
+  {
+    id: 'my-leave',
+    label: 'My Leave',
+    description: 'Manage your leave requests and balance',
+    href: '/leave',
+    icon: Calendar,
+    color: 'from-blue-500 to-blue-600',
+  },
+  {
+    id: 'my-assignment',
+    label: 'My Assignment',
+    description: 'View and track your assignments',
+    href: '/assignment',
+    icon: Briefcase,
+    color: 'from-purple-500 to-purple-600',
+  },
+  {
+    id: 'my-travel',
+    label: 'My Travel',
+    description: 'Organize your travel itineraries',
+    href: '/travel',
+    icon: Plane,
+    color: 'from-emerald-500 to-emerald-600',
+  },
+  {
+    id: 'my-profile',
+    label: 'My Profile',
+    description: 'View and edit your profile information',
+    href: '/profile',
+    icon: User,
+    color: 'from-orange-500 to-orange-600',
+  },
+]
+
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4 relative">
-      <div className="w-full max-w-md space-y-8">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-foreground">
-            {rootDomain}
-          </h1>
-          <p className="mt-3 text-lg text-muted-foreground">
-            Create your own subdomain with a custom emoji
-          </p>
-        </div>
+    <div className="w-full h-full p-8">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-4xl font-bold mb-2">Welcome back, Willis Yarborough!</h1>
+        <p className="text-muted-foreground mb-6">Select an option below to get started:</p>
 
-        <div className="mt-8 bg-card shadow-md rounded-lg p-6">
-          <SubdomainForm />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {menuItems.map((item) => {
+            const Icon = item.icon
+            return (
+              <Link key={item.id} href={item.href}>
+                <Card className="h-full p-8 cursor-pointer transition-all hover:shadow-lg hover:scale-105">
+                  <div className={`bg-gradient-to-br ${item.color} rounded-lg p-8 mb-6 flex items-center justify-center h-32 w-full`}>
+                    <Icon className="w-16 h-16 text-white" />
+                  </div>
+                  <h2 className="text-2xl font-bold mb-2">{item.label}</h2>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </Card>
+              </Link>
+            )
+          })}
         </div>
       </div>
     </div>
-  );
+  )
 }

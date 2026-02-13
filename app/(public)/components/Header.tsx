@@ -46,7 +46,7 @@ export default function HeaderClient() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="relative w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-colors flex items-center justify-center cursor-pointer" aria-label="User menu">
-                <span className="text-white font-semibold text-sm">JD</span>
+                <span className="text-white font-semibold text-sm">WY</span>
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
